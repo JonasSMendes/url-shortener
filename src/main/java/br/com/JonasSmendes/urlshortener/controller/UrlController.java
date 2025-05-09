@@ -35,7 +35,6 @@ public class UrlController {
         }while (urlRepository.existsById(id));
 
         urlRepository.save(new UrlEntity(id, url.url(), LocalDateTime.now().plusMinutes(1)));
-
         var redirectUrl = httpServletRequest.getRequestURL().toString().replace("url", id);
 
         return ResponseEntity.ok(new UrlResponse(redirectUrl));
